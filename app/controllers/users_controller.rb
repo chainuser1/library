@@ -1,25 +1,27 @@
 class UsersController < ApplicationController
   require 'bcrypt'
-  def login
-  end
+
   def new
     @user=User.new
   end
   def register
-     @user=User.new(user_params)
+     @user=User.new(user_params_register)
 
        respond_to do |format|
          if @user.save
-           format.html {redirect_to 'welcome/index', notice: 'You may sign in now.'}
+           format.html {redirect_to root_path, notice: 'You may sign in now.'}
          else
-           format.html {redirect_to 'new'}
-           format.json{@user}
+           format.html {render 'new'}
+           #format.json{@user}
          end
        end
 
   end
   private
-  def user_params
+  def user_params_register
+    params.require(:user).permit(:email,:password,:password_confirmation)
+  end
+  def user_params_login
     params.require(:user).permit(:email,:password)
   end
 end

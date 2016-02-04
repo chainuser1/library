@@ -1,42 +1,48 @@
-<div class="panel text-center">
-   <div class="panel-heading">
-     <h2>Sign Up</h2>
-   </div>
-   <div class="panel-body">
-     <%=form_for(:user,url:'register') do |f|%>
-         <% if @user.errors.any? %>
-             <div class="alert alert-danger">
-               <button class="glyphicon glyphicon-alert"
-                       role="button" data-dismiss="alert"
-                       aria-expanded="false"
-               >&times;</button>
-               <h3 class="h3">
-                 <%=pluralize(@user.errors.count,"errors")%>
-                 &nbsp; prevented your registration.
-               </h3>
-               <ul>
-                 <%= @user.errors.messages do |message| %>
-                     <li><%=message %></li>
-                 <% end %>
-               </ul>
-             </div>
-         <% end %>
-         <div class="form-group col-md-2">
-           <%= f.label :email %>
-           <%= f.text_field :email,{'class'=>'form-control'} %>
-         </div>
-         <div class="form-group col-md-2">
-           <%= f.label :password %>
-           <%= f.password_field :password,{'class'=>'form-control'} %>
-         </div>
-         <div class="form-group col-md-2">
-           <%= f.label :confirm_password %>
-           <%= f.password_field :confirm_password,{'class'=>'form-control'} %>
-         </div>
-         <span class="dl-horizontal"></span>
-         <div class="form-group">
-           <%= f.submit :Register ,{'class'=>'btn btn-lg btn-default pull-right'} %>
-         </div>
-     <% end %>
-   </div>
-</div>
+
+  <div class="container col-md-offset-3">
+
+      <div class="center-block col-sm-6">
+        <fieldset>
+          <%=form_for(:user,url:'register') do |f|%>
+              <div class="legend">
+                <legend class="text-center">Register</legend>
+              </div>
+              <% if @user.errors.any? %>
+                  <div class="alert alert-danger">
+                    <a class="close" aria-label="close" data-dismiss="alert" >&times;</a>
+                    <strong>
+                      <%= pluralize(@user.errors.count,"error")%>
+                      &nbsp; prevented your registration:
+                    </strong>
+                    <ul>
+                      <% @user.errors.full_messages.each do |message| %>
+                          <li><%=message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+              <div class="form-group">
+                <%= f.label :email %>
+                <%= f.text_field :email,{'class'=>'input-lg form-control'} %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password,{'class'=>'input-lg form-control'} %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation,{'class'=>'input-lg form-control'} %>
+              </div>
+              <br>
+              <p>Already a User? <%= link_to "Log In Now!", login_auths_path %></p>
+              <div class="control-group">
+                <!-- Button -->
+                <div class="controls text-center">
+                  <button class="btn btn-success">Register</button>
+                </div>
+              </div>
+          <% end %>
+        </fieldset>
+      </div>
+
+  </div>
