@@ -25,7 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt'
-
+#pagination
+gem 'will_paginate-bootstrap'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

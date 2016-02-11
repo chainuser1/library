@@ -3,16 +3,17 @@
 
       <div class="center-block col-sm-6">
         <fieldset>
-          <%=form_for(:user,url:'register') do |f|%>
+          <%=form_for(:user,url:register_users_path) do |f|%>
               <div class="legend">
                 <legend class="text-center">Register</legend>
               </div>
               <% if @user.errors.any? %>
                   <div class="alert alert-danger">
-                    <a class="close" aria-label="close" data-dismiss="alert" >&times;</a>
+                    <a class="close" aria-label="close"
+                       data-dismiss="alert" >&times;</a>
                     <strong>
                       <%= pluralize(@user.errors.count,"error")%>
-                      &nbsp; prevented your registration:
+                    &nbsp; prevented your registration:
                     </strong>
                     <ul>
                       <% @user.errors.full_messages.each do |message| %>
