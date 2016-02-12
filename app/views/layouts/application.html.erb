@@ -36,13 +36,18 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">All Books</a></li>
+            <li><%= link_to 'All Books', books_path, remote:true %></li>
+            <li role="separator" class="divider"></li>
             <% if logged_in? %>
-                <li><a href="#">Add Book</a></li>
-                <li role="separator" class="divider"></li>
                 <li><a href="#">New Added Books</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Old Books</a></li>
+                <% if is_admin? %>
+                    <li role="separator" class="divider"></li>
+                    <li class="bg-warning"><a href="#">Add Book Category</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="bg-warning"><%= link_to 'Add Books', new_book_path, remote: true %></li>
+                <% end %>
             <% end %>
           </ul>
         </li>
@@ -64,7 +69,7 @@
                 <li><a href="<%= new_users_path %>">Sign Up</a></li>
                 <li><a href="<%= login_auths_path %>">Login</a></li>
             <% else %>
-                <%= link_to "Log out", logout_auths_path, method: :post %>
+                <%= link_to "Log Out", logout_auths_path, method: :post %>
             <% end %>
             <li role="separator" class="divider"></li>
             <!--<li><a href="#">Separated link</a></li>-->
@@ -76,6 +81,7 @@
 </nav>
 <!--******-->
 <%= yield %>
+<div id="book-modal" class="container" role="dialog"></div>
 
 </body>
 </html>

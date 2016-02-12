@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :books do
+    member do
+      post 'logout'
+    end
+  end
+
   resource :auths do
     member do
       get 'login'
