@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   require 'bcrypt'
-
+  layout 'application'
   def new
     if logged_in?
       redirect_to root_path
@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 
        respond_to do |format|
          if @user.save
-           format.html {redirect_to root_path, notice: 'You may sign in now.'}
+           provide(:notice,'')
+           format.html {redirect_to root_path}
          else
            format.html {render 'new'}
            #format.json{@user}

@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   include BooksHelper
+  layout 'application'
   def index
     @books=Book.all
   end

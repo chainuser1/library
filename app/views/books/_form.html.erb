@@ -29,7 +29,7 @@
           </div>
           <div class="form-group">
             <%= f.label :copyright %>
-            <%= f.date_select :copyright, class:"form-control"  %>
+            <%= f.date_select :copyright, class:"form-control", :start_year=>Time.now.year-300, :end_year=>Time.now.year  %>
           </div>
           <div class="form-group">
             <%= f.label :description %>

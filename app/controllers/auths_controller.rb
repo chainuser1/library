@@ -1,4 +1,5 @@
 class AuthsController < ApplicationController
+  layout 'application'
   def login
     if logged_in?
       redirect_to root_path
