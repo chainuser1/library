@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211183340) do
+ActiveRecord::Schema.define(version: 20160213001742) do
 
   create_table "add_isbn_unique_to_books", force: :cascade do |t|
   end
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 20160211183340) do
   end
 
   add_index "books", ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "category",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           limit: 255

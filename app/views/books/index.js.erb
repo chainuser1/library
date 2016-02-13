@@ -1,2 +1,4 @@
-$("#library-modal").html('<h6 class="h6 text-success">Loading...</h6>').delay(2000)
+
+
 $("#library-modal").html("<%= escape_javascript(render 'index')%>")
+$("#library-modal").modal('show')
