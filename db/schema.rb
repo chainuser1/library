@@ -11,12 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213001742) do
+ActiveRecord::Schema.define(version: 20160216170423) do
 
   create_table "add_isbn_unique_to_books", force: :cascade do |t|
   end
 
   create_table "add_password_digest_to_users", force: :cascade do |t|
+  end
+
+  create_table "add_unique_category_to_book_types", force: :cascade do |t|
   end
 
   create_table "add_user_role_to_users", force: :cascade do |t|
@@ -33,6 +36,8 @@ ActiveRecord::Schema.define(version: 20160213001742) do
     t.datetime "updated_at",             null: false
   end
 
+  add_index "book_types", ["category"], name: "index_book_types_on_category", unique: true, using: :btree
+
   create_table "books", id: false, force: :cascade do |t|
     t.string   "isbn",        limit: 255
     t.string   "title",       limit: 255
@@ -47,7 +52,7 @@ ActiveRecord::Schema.define(version: 20160213001742) do
 
   add_index "books", ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
 
-  create_table "categories", force: :cascade do |t|
+  create_table "book_types", force: :cascade do |t|
     t.string   "category",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

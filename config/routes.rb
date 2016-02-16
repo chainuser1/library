@@ -1,9 +1,16 @@
+
 Rails.application.routes.draw do
 
   resources :books
   get 'welcome/index'
 
-  resources :categories
+  resource :book_types do
+    member do
+      get 'new'
+      post 'create'
+    end
+  end
+
   resource :auths do
     member do
       get 'login'
