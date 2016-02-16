@@ -8,7 +8,6 @@ jQuery.noConflict();
         //alert('Page: ' + $('title').html() + ' dom loaded!');
         $(".model-books").click(function(){
             $("#library-modal").modal()
-
         });
         //alert("Hello");
     });

@@ -7,12 +7,7 @@ class BooksController < ApplicationController
 
   def show
   end
-  def category
-    #@category=Category.new
-  end
-  def categorize
 
-  end
   def new
     @book=Book.new
   end

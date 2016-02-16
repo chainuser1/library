@@ -4,4 +4,5 @@ class CreateAddUserRoleToUsers < ActiveRecord::Migration
       add_column :users, :role, :integer, default: 1
     end
   end
+
 end
