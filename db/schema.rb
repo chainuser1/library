@@ -38,8 +38,7 @@ ActiveRecord::Schema.define(version: 20160216170423) do
 
   add_index "book_types", ["category"], name: "index_book_types_on_category", unique: true, using: :btree
 
-  create_table "books", id: false, force: :cascade do |t|
-    t.string   "isbn",        limit: 255
+  create_table "books", primary_key: "isbn", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.string   "author",      limit: 255
     t.string   "category",    limit: 255
@@ -52,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160216170423) do
 
   add_index "books", ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
 
-  create_table "book_types", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "category",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

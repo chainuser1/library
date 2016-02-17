@@ -4,7 +4,7 @@ module BooksHelper
     if heading.empty?
       book_heading
     else
-      book_heading + ' ' + heading
+      heading
     end
   end
 end

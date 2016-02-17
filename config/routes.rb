@@ -1,8 +1,12 @@
 
 Rails.application.routes.draw do
 
-  resources :books
-  get 'welcome/index'
+  resources :books, param: :isbn do
+    member do
+      get 'edit'
+      patch 'update'
+    end
+  end
 
   resource :book_types do
     member do

@@ -1,4 +1,8 @@
 class Book < ActiveRecord::Base
+  self.primary_key=:isbn
+  def to_param
+    isbn
+  end
   ISBN_REGEX_CHECKER=/(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})/
   AUTHOR_REGEX=/\A[A-z][A-z|\.|\s]+\z/
   validates :isbn, presence: true,
@@ -12,4 +16,7 @@ class Book < ActiveRecord::Base
   validates :copyright, presence: true
   validates :description, presence: true,
                          length: {minimum: 200, maximum: 1000}
+
+
+
 end

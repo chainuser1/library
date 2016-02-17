@@ -1,0 +1,17 @@
+$("#puncture").html("")
+<% if @book.errors.any? %>
+    $("#puncture").addClass("alert-danger")
+    $("#puncture").append("<strong>").html(
+        "<%= pluralize(@book.errors.count,"error")%> prevented saving your book."
+    )
+    $("#puncture").append("<ul>").html(
+        "<%= @book.errors.full_messages do |message| %>"+
+                "<li>"+<%= message %> +"</li>"+
+         "<% end %>"
+    )
+<% else %>
+    $("#puncture").addClass("alert-success")
+    $("#puncture").append("<p>")
+          .html("<%= @book.title %> has been saved")
+          .fadeToggle(3000)
+<% end %>
