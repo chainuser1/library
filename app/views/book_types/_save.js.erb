@@ -1,8 +1,8 @@
 $("#puncture").html("")
 <% if @book_type.errors.any? %>
  $("#puncture").addClass("alert-danger")
-$("#puncture").append("<p>").html("<%= @book_type.category %> has failed to save").fadeOut(3000)
+$("#puncture").append("<p>").html("<%= @book_type.category %> has failed to save").fadeToggle(3000)
 <% else %>
-  $("#puncture").toggleClass("alert")
-  $("#puncture").append("<p>").html("<%= @book_type.category %> has been saved").fadeOut(3000)
+  $("#puncture").addClass("alert-success")
+  $("#puncture").append("<p>").html("<%= @book_type.category %> has been saved").fadeToggle(3000)
 <% end %>
