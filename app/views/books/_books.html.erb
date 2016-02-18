@@ -28,8 +28,9 @@
                      <td><%= book.category %></td>
                      <td><%= book.publisher %></td>
                      <td><%= book.copyright %></td>
-                     <td><%= link_to "Edit", edit_book_path(book.isbn), remote: true, class: "btn btn-default model-books" %></td>
-
+                     <% if is_admin? %>
+                         <td><%= link_to "Edit", edit_book_path(book.isbn), remote: true, class: "btn btn-default model-books" %></td>
+                     <% end %>
                    </tr>
                <% end %>
                </tbody>

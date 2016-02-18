@@ -35,7 +35,7 @@
             <li><%= link_to 'All Books', books_path %></li>
             <li role="separator" class="divider"></li>
             <% if logged_in? %>
-                <li><a href="#">New Added Books</a></li>
+                <li><%=link_to 'Search for Book', search_book_path('index'), remote:true, class:"model-books" %></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Old Books</a></li>
                 <% if is_admin? %>
@@ -75,8 +75,11 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
 <!--******-->
-<%= yield %>
+   <div class="container-fluid" style="margin-top: 3%; z-index:300">
+     <%= yield %>
+   </div>
   <div id="library-modal" class="modal fade" role="dialog" tabindex="-1" style="margin-top: 10%; z-index: 1300">
     <% if :notice.present? %>
       <p><%=:notice %></p>
@@ -87,6 +90,5 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'costume-application', 'data-turbolinks-track' => true %>
-
 </body>
 </html>

@@ -5,9 +5,12 @@ Rails.application.routes.draw do
     member do
       get 'edit'
       patch 'update'
+      get 'search'
+      post 'show'
     end
   end
 
+  #get 'books/search' => 'books#search'
   resource :book_types do
     member do
       get 'new'

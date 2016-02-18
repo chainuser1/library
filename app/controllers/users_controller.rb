@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
        respond_to do |format|
          if @user.save
-           provide(:notice,'')
            format.html {redirect_to root_path}
          else
            format.html {render 'new'}
