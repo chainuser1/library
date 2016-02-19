@@ -3,7 +3,7 @@
      <div class="modal-header">
        <h3 class="h3 text-warning">Advance Search</h3>
      </div>
-     <%= form_for :@book,url: 'books/show' do |f| %>
+     <%= form_for :book,url: manifest_book_path('none') do |f| %>
         <div class="modal-body">
           <div class="form-group">
             <%= f.label :isbn %>

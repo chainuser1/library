@@ -1,15 +1,32 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:edit,:update,:destroy]
+  before_action :set_book, only: [:edit,:update,:destroy,:show]
 
   include BooksHelper
   layout 'application'
   def index
     @books=Book.all.paginate(:per_page=>5,:page => params[:page]).order('created_at DESC')
   end
-
   def show
+    render 'show'
   end
-
+  def manifest
+    respond_to do |format|
+      if params[:book][:isbn].present?
+        @books=Book.find_by_isbn(params[:book][:isbn])
+        format.html {render 'manifest'}
+      elsif params[:book][:title].present?
+        @books=Book.where(" title LIKE ?","%"+params[:book][:title]+"%")
+                   .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
+        format.html {render 'manifest'}
+        #format.json {@books,@item}
+      elsif params[:book][:author].present?
+        @books=Book.where(" author LIKE ?","%"+params[:book][:author]+"%")
+                   .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
+        format.html {render 'manifest'}
+        #format.json {@books,@item}
+      end
+    end
+  end
   def new
     @book=Book.new
   end

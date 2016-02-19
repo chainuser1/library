@@ -3,10 +3,11 @@ Rails.application.routes.draw do
 
   resources :books, param: :isbn do
     member do
+      post 'manifest'
       get 'edit'
       patch 'update'
       get 'search'
-      post 'show'
+      get 'show'
     end
   end
 
