@@ -19,7 +19,7 @@
           </div>
           <div class="form-group">
             <%= f.label :category %>
-            <%= f.collection_select :category,BookType.all, :category, :category, {'class'=>'form-control'} %>
+            <%= f.collection_select :category,BookType.all, :category, :category, :include_blank => true, :default => nil %>
           </div>
           <div class="form-group">
             <%= f.label :publisher %>
@@ -27,7 +27,7 @@
           </div>
           <div class="form-group">
             <%= f.label :copyright_date %>
-            <%= f.date_select :copyright, class: "form-control" %>
+            <%= f.date_select :copyright, class: "form-control",:include_blank => true, :default => nil %>
           </div>
 
         </div>

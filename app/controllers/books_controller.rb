@@ -14,13 +14,49 @@ class BooksController < ApplicationController
       if params[:book][:isbn].present?
         @books=Book.find_by_isbn(params[:book][:isbn])
         format.html {render 'manifest'}
-      elsif params[:book][:title].present?
+      elsif params[:book][:title].present? && !params[:book][:author].present?  && !params[:book][:category].present?  && !params[:book][:publisher].present?  && !params[:book][:copyright].present?
         @books=Book.where(" title LIKE ?","%"+params[:book][:title]+"%")
                    .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
         format.html {render 'manifest'}
         #format.json {@books,@item}
-      elsif params[:book][:author].present?
+      elsif params[:book][:title].present? && params[:book][:author].present?  && !params[:book][:category].present?  && !params[:book][:publisher].present?  && !params[:book][:copyright].present?
+        @books=Book.where(" title LIKE ? and author LIKE ?","%"+params[:book][:title]+"%", "%"+params[:book][:author]+"%")
+                   .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
+        format.html {render 'manifest'}
+        #format.json {@books,@item}
+      elsif params[:book][:title].present? && params[:book][:author].present?  && params[:book][:category].present?  && !params[:book][:publisher].present?  && !params[:book][:copyright].present?
+        @books=Book.where(" title LIKE ? and author LIKE ? and category=?","%"+params[:book][:title]+"%","%"+params[:book][:author]+"%", params[:book][:category])
+                   .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
+        format.html {render 'manifest'}
+        #format.json {@books,@item}
+      elsif params[:book][:title].present? && params[:book][:author].present?  && params[:book][:category].present?  && params[:book][:publisher].present?  && !params[:book][:copyright].present?
+        @books=Book.where(" title LIKE ? and author LIKE ? and category=? and publisher LIKE ?","%"+params[:book][:title]+"%","%"+params[:book][:author]+"%",params[:book][:publisher],"%"+params[:book][:publisher]+"%")
+                   .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
+        format.html {render 'manifest'}
+        #format.json {@books,@item}
+      elsif params[:book][:title].present? && params[:book][:author].present?  && params[:book][:category].present?  && params[:book][:publisher].present?  && params[:book][:copyright].present?
+        @books=Book.where(" title LIKE ? and author LIKE ? and category=? and publisher LIKE ? and copyright=?","%"+params[:book][:title]+"%","%"+params[:book][:author]+"%", params[:book][:category],"%"+params[:book][:publisher]+"%",params[:book][:copyright])
+                   .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
+        format.html {render 'manifest'}
+        #format.json {@books,@item}
+      #author and likes
+      elsif params[:book][:author].present? && !params[:book][:category].present?  && !params[:book][:publisher].present?  && !params[:book][:copyright].present?
         @books=Book.where(" author LIKE ?","%"+params[:book][:author]+"%")
+                   .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
+        format.html {render 'manifest'}
+        #format.json {@books,@item}
+      elsif params[:book][:author].present? && params[:book][:category].present?  && !params[:book][:publisher].present?  && !params[:book][:copyright].present?
+        @books=Book.where(" author LIKE ? and category=?","%"+params[:book][:author]+"%", params[:book][:category])
+                   .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
+        format.html {render 'manifest'}
+        #format.json {@books,@item}
+      elsif params[:book][:author].present? && params[:book][:category].present?  && params[:book][:publisher].present?  && !params[:book][:copyright].present?
+        @books=Book.where(" author LIKE ? and category=? and publisher LIKE ?","%"+params[:book][:author]+"%", params[:book][:category],"%"+params[:book][:publisher]+"%")
+                   .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
+        format.html {render 'manifest'}
+        #format.json {@books,@item}
+      elsif params[:book][:author].present? && params[:book][:category].present?  && params[:book][:publisher].present?  && !params[:book][:copyright].present?
+        @books=Book.where(" author LIKE ? and category=? and publisher LIKE ? copyright=?","%"+params[:book][:author]+"%", params[:book][:category],"%"+params[:book][:publisher]+"%", params[:book][:copyright])
                    .paginate(:per_page=>5, :page => params[:page]).order('created_at DESC')
         format.html {render 'manifest'}
         #format.json {@books,@item}
