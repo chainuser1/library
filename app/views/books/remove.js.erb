@@ -1,0 +1,4 @@
+var element = document.getElementById("<%=@index%>");
+element.parentNode.removeChild(element);
+$("#crucial").addClass("alert-success").text("Book has been removed").fadeToggle(7000);
+$("#library-modal").fadeOut(1000);

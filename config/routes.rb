@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'show'
       get 'delete'
+      post 'remove'
     end
   end
 

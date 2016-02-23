@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:edit,:update,:destroy,:show]
+  before_action :set_book, only: [:edit,:update,:delete,:remove,:show]
 
   include BooksHelper
   layout 'application'
   def index
-    @books=Book.all.paginate(:per_page=>5,:page => params[:page]).order('created_at DESC')
+    @books=Book.all.paginate(:per_page=>5,:page => params[:page]).order('title ASC')
   end
   def show
     render 'show'
@@ -19,53 +19,53 @@ class BooksController < ApplicationController
         format.html {render 'manifest'}
       #title and likes
       elsif params[:book][:title].present?
-        @books=Book.where('title  LIKE ?',"%"+params[:book][:title]+"%")
+        @books=Book.where('title  LIKE ?',"%"+params[:book][:title]+"%").order('title ASC')
                    .paginate(:per_page=>5,:page=>params[:page])
         if params[:book][:author].present? #author is present
-          @books=Book.where('title  LIKE ? and author LIKE ?',"%"+params[:book][:title]+"%","%"+params[:book][:author]+"%")
+          @books=Book.where('title  LIKE ? and author LIKE ?',"%"+params[:book][:title]+"%","%"+params[:book][:author]+"%").order('title ASC')
                      .paginate(:per_page=>5,:page=>params[:page])
           if params[:book][:category].present?
             @books=Book.where('title  LIKE ? and author LIKE ? and category=?',
-                              "%"+params[:book][:title]+"%","%"+params[:book][:author]+"%",params[:book][:category])
+                              "%"+params[:book][:title]+"%","%"+params[:book][:author]+"%",params[:book][:category]).order('title ASC')
                        .paginate(:per_page=>5,:page=>params[:page])
             if params[:book][:publisher].present?
               @books=Book.where('title  LIKE ? and author LIKE ? and category=? and publisher LIKE ?',
-                                "%"+params[:book][:title]+"%","%"+params[:book][:author]+"%",params[:book][:category], "%"+params[:book][:publisher]+"%")
+                                "%"+params[:book][:title]+"%","%"+params[:book][:author]+"%",params[:book][:category], "%"+params[:book][:publisher]+"%").order('title ASC')
                          .paginate(:per_page=>5,:page=>params[:page])
             end
           end
         elsif params[:book][:category].present?
-          @books=Book.where('title  LIKE ? and category=?',"%"+params[:book][:title]+"%",params[:book][:category])
+          @books=Book.where('title  LIKE ? and category=?',"%"+params[:book][:title]+"%",params[:book][:category]).order('title ASC')
                      .paginate(:per_page=>5,:page=>params[:page])
           if params[:book][:publisher].present?
-            @books=Book.where('title  LIKE ? and category=? and publisher LIKE ?',"%"+params[:book][:title]+"%",params[:book][:category],"%"+params[:book][:publisher]+"%")
+            @books=Book.where('title  LIKE ? and category=? and publisher LIKE ?',"%"+params[:book][:title]+"%",params[:book][:category],"%"+params[:book][:publisher]+"%").order('title ASC')
                        .paginate(:per_page=>5,:page=>params[:page])
           end
         elsif params[:book][:publisher].present?
-          @books=Book.where('title  LIKE ? and publisher like ?',"%"+params[:book][:title]+"%","%"+params[:book][:publisher]+"%")
+          @books=Book.where('title  LIKE ? and publisher like ?',"%"+params[:book][:title]+"%","%"+params[:book][:publisher]+"%").order('title ASC')
                      .paginate(:per_page=>5,:page=>params[:page])
         end
       #author and likes
       elsif params[:book][:author].present?
-        @books=Book.where('author  LIKE ?',"%"+params[:book][:author]+"%")
+        @books=Book.where('author  LIKE ?',"%"+params[:book][:author]+"%").order('title ASC')
                    .paginate(:per_page=>5,:page=>params[:page])
         if params[:book][:category].present?
-          @books=Book.where('author  LIKE ? and category=?',"%"+params[:book][:author]+"%",params[:book][:category])
+          @books=Book.where('author  LIKE ? and category=?',"%"+params[:book][:author]+"%",params[:book][:category]).order('title ASC')
                      .paginate(:per_page=>5,:page=>params[:page])
           if params[:book][:publisher].present?
-            @books=Book.where('author  LIKE ? and category=? and publisher like ?',"%"+params[:book][:author]+"%",params[:book][:category],"%"+params[:book][:publisher]+"%")
+            @books=Book.where('author  LIKE ? and category=? and publisher like ?',"%"+params[:book][:author]+"%",params[:book][:category],"%"+params[:book][:publisher]+"%").order('title ASC')
                        .paginate(:per_page=>5,:page=>params[:page])
           end
         end
       elsif params[:book][:category].present?
-        @books=Book.where('category=?',params[:book][:category])
+        @books=Book.where('category=?',params[:book][:category]).order('title ASC')
                    .paginate(:per_page=>5,:page=>params[:page])
         if params[:book][:publisher].present?
-          @books=Book.where('category=? and publisher like ?',params[:book][:category],"%"+params[:book][:publisher]+"%")
+          @books=Book.where('category=? and publisher like ?',params[:book][:category],"%"+params[:book][:publisher]+"%").order('title ASC')
                      .paginate(:per_page=>5,:page=>params[:page])
         end
       elsif params[:book][:publisher].present?
-        @books=Book.where("publisher like ?","%"+params[:book][:publisher]+"%")
+        @books=Book.where("publisher like ?","%"+params[:book][:publisher]+"%").order('title ASC')
                    .paginate(:per_page=>5,:page=>params[:page])
       end
       format.html {render 'manifest'}
@@ -107,8 +107,12 @@ class BooksController < ApplicationController
 
 
   def delete
-  end
 
+  end
+  def remove
+    @index=params[:isbn]
+    @book=@book.delete
+  end
   def show_old
   end
 

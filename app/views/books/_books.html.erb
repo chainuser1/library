@@ -4,6 +4,7 @@
 
      <div class="section-header">
        <h3 class="h3 section-title"><%= book_page_heading(yield(:heading)) %></h3>
+       <div class="alert" id="crucial"></div>
      </div>
      <div class="section-body">
        <% if @books.present? %>
@@ -20,8 +21,8 @@
                </tr>
                </thead>
                <tbody>
-               <% @books.each do |book|%>
-                   <tr>
+               <% @books.each do |book,index|%>
+                   <tr id="<%= book.isbn %>">
                      <td><%= book.isbn %></td>
                      <td><%= link_to book.title, book,class: "btn-link" %></td>
                      <td><%= book.author %></td>

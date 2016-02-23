@@ -31,8 +31,8 @@ class BooksControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get destroy" do
-    get :destroy
+  test "should get remove" do
+    get :remove
     assert_response :success
   end
 

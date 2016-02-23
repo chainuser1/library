@@ -3988,7 +3988,7 @@ function internalRemoveData( elem, name, pvt ) {
 	if ( !pvt ) {
 		delete cache[ id ].data;
 
-		// Don't destroy the parent cache unless the internal data object
+		// Don't remove the parent cache unless the internal data object
 		// had been the only thing left in it
 		if ( !isEmptyDataObject( cache[ id ] ) ) {
 			return;
@@ -8643,7 +8643,7 @@ if ( !support.style ) {
 
 			// Return undefined in the case of empty string
 			// Note: IE uppercases css property names, but if we were to .toLowerCase()
-			// .cssText, that would destroy case sensitivity in URL's, like in "background"
+			// .cssText, that would remove case sensitivity in URL's, like in "background"
 			return elem.style.cssText || undefined;
 		},
 		set: function( elem, value ) {

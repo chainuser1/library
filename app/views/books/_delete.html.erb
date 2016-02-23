@@ -1,0 +1,14 @@
+<div class="modal-dialog col-md-offset-3">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="h4 text-warning">Warning!</h4>
+    </div>
+    <div class="modal-body">
+      <p class="alert">Are you sure you want to delete "<%= @book.title %>"?</p>
+    </div>
+    <div class="modal-footer">
+      <%= link_to "Yes, I want to delete this.", remove_book_path(@book.isbn),remote:true,class:"btn btn-danger", method:"post" %>
+      <a class="btn btn-primary" href="#cancel" data-dismiss="modal">No, I refuse to delete this.</a>
+    </div>
+  </div>
+</div>

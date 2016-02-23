@@ -39,9 +39,9 @@ class ReeksControllerTest < ActionController::TestCase
     assert_redirected_to reek_path(assigns(:reek))
   end
 
-  test "should destroy reek" do
+  test "should remove reek" do
     assert_difference('Reek.count', -1) do
-      delete :destroy, id: @reek
+      delete :remove, id: @reek
     end
 
     assert_redirected_to reeks_path
