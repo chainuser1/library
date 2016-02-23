@@ -8,7 +8,7 @@ jQuery.noConflict();
         //alert('Page: ' + $('title').html() + ' dom loaded!');
         $(".model-books").click(function(){
             $("#library-modal").modal()
+            $("#library-modal").show(1000).text("Loading...")
         });
-        //alert("Hello");
     });
 })(jQuery);

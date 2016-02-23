@@ -30,20 +30,21 @@
                      <td><%= book.copyright %></td>
                      <% if is_admin? %>
                          <td><%= link_to "Edit", edit_book_path(book.isbn), remote: true, class: "btn btn-default model-books" %></td>
+                         <td><%= link_to "Delete", delete_book_path(book.isbn), remote: true , class: "btn btn-default model-books"%></td>
                      <% end %>
                    </tr>
                <% end %>
                </tbody>
              </table>
            </div>
-
        <% else %>
            <h4 class="h4 col-sm-6 text-warning">No Books Found!</h4>
        <% end %>
      </div>
      <div class="section-footer text-center">
-       <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
-
+      <% if @books!=nil %>
+           <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
+     <% end %>
      </div>
    </div>
 

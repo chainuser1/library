@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       patch 'update'
       get 'search'
       get 'show'
+      get 'delete'
     end
   end
 

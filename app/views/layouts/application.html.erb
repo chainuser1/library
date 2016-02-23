@@ -80,16 +80,13 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
 <!--******-->
    <div class="container-fluid" style="margin-top: 3%; z-index:300">
      <%= yield %>
+     <div id="library-modal" class="modal fade" role="dialog" tabindex="-1" style="margin-top: 10%; z-index: 1300">
+     </div>
    </div>
-  <div id="library-modal" class="modal fade" role="dialog" tabindex="-1" style="margin-top: 10%; z-index: 1300">
-    <% if :notice.present? %>
-      <p><%=:notice %></p>
-    <% end %>
-  </div>
+
 
 <%= javascript_include_tag 'jquery.min', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

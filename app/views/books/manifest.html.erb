@@ -1,4 +1,9 @@
-<% provide(:heading,'Search Results:  ' + @books.size.to_s) %>
+<% if @books!=nil%>
+    <% provide(:heading,'Search Results:  ' + @books.size.to_s) %>
+<%else %>
+    <% provide(:heading,'Search Results') %>
+<% end %>
+
 <% provide(:title, 'Search Books')%>
 <%= render 'books' %>
 
