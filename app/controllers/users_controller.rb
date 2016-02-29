@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   require 'bcrypt'
   layout 'application'
+
   def new
     if logged_in?
       redirect_to root_path

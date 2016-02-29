@@ -1,6 +1,7 @@
 
 Rails.application.routes.draw do
 
+  resources :profiles, param: :email
   resources :books, param: :isbn do
     member do
       post 'manifest'
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
       post 'remove'
     end
   end
-
   #get 'books/search' => 'books#search'
   resource :book_types do
     member do
