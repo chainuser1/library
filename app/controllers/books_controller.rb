@@ -16,7 +16,7 @@ class BooksController < ApplicationController
       if params[:book][:isbn].present?
         @books=Book.where('isbn=?',params[:book][:isbn])
                .paginate(:per_page=>5,:page=>params[:page])
-        format.html {render 'manifest'}
+
       #title and likes
       elsif params[:book][:title].present?
         @books=Book.where('title  LIKE ?',"%"+params[:book][:title]+"%").order('title ASC')
