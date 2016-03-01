@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  has_one :profile, :foreign_key => 'email',:class_name => 'Profile'
+  # self.primary_key='email'
+  has_one :profile,:class_name => 'Profile'
+
+
   REGEX_EMAIL_PATTERN=/([a-z0-9_]|[a-z0-9_]+\.[a-z0-9_]+)@(([a-z0-9]|[a-z0-9]+\.[a-z0-9]+)+\.([a-z]{2,4}))/i
   validates :email ,presence:true,
                    format: {with: REGEX_EMAIL_PATTERN, message: ' is invalid!'},

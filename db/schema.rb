@@ -58,9 +58,8 @@ ActiveRecord::Schema.define(version: 20160229194532) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "profiles", force: :cascade do |t|
+  create_table "profiles", id: false, force: :cascade do |t|
     t.integer  "user_id",    limit: 4
-    t.string   "email",      limit: 255
     t.string   "fname",      limit: 255
     t.string   "lname",      limit: 255
     t.string   "gender",     limit: 255
@@ -73,13 +72,11 @@ ActiveRecord::Schema.define(version: 20160229194532) do
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           limit: 255
+    t.string   "email",           limit: 50,              null: false
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.string   "password_digest", limit: 255
     t.integer  "role",            limit: 4,   default: 1
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
