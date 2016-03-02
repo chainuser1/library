@@ -1,0 +1,41 @@
+<div class="panel">
+  <div class="panel-heading page-header">
+    <div class="navbar navbar-default">
+     <div class="container-fluid">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#toggle-options" aria-expanded="false">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#"><h2><%= current_user.email %></h2><span class="badge glyphicon glyphicon-apple"></span></a>
+       </div>
+       <div class="collapse navbar-collapse " id="toggle-options">
+         <ul class="nav navbar-nav">
+           <li><%= link_to 'Edit', edit_profile_path(@user.email), class:"btn-link", method: :get%></li>
+           <li><%= link_to 'Delete Profile', profile_path(@user.email),class:"btn-link", method: :delete %></li>
+         </ul>
+       </div>
+     </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <label>Name: </label>
+      <p class="form-control"><%= @profile.lname%>, <%= @profile.fname%></p>
+    </div>
+    <div class="form-group">
+      <label>Gender: </label>
+      <p class="form-control"><%= @profile.gender %></p>
+    </div>
+    <div class="form-group">
+      <label>Address: </label>
+      <p class="form-control"><%= @profile.address %></p>
+    </div>
+    <div class="form-group">
+      <label>Birthdate: </label>
+      <p class="form-control"><%= @profile.birthdate.to_formatted_s('M-d-Y') %></p>
+    </div>
+  </div>
+</div>

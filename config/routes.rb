@@ -1,7 +1,8 @@
 
 Rails.application.routes.draw do
-
+  get 'welcome/index'
   resources :profiles, param: :email
+  get 'welcome/index'
   resources :books, param: :isbn do
     member do
       post 'manifest'

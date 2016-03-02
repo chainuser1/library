@@ -8,4 +8,12 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+  def profile_page_heading(heading='')
+    profile_heading='Profile'
+    if heading.empty?
+      profile_heading
+    else
+      profile_heading + ": " + heading
+    end
+  end
 end

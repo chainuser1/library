@@ -70,7 +70,12 @@
                 <li><a href="<%= new_users_path %>">Sign Up</a></li>
                 <li><a href="<%= login_auths_path %>">Login</a></li>
             <% else %>
-                <%= link_to "Log Out", logout_auths_path, method: :post %>
+                <% if profile_checker? %>
+                  <li> <%= link_to 'View Profile', profile_path(current_user.email), class: "btn-link"%></li>
+                <% else %>
+                   <li><%= link_to 'Create Your Profile', new_profile_path, class: "btn-link" %></li>
+                <% end %>
+                <li><%= link_to "Log Out", logout_auths_path, method: :post %></li>
             <% end %>
             <li role="separator" class="divider"></li>
             <!--<li><a href="#">Separated link</a></li>-->

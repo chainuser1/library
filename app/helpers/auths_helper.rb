@@ -19,14 +19,19 @@ module AuthsHelper
   end
 
 =begin
-  Profile Checker
+  Profile Checker if there is a profile associated with a specific user
 =end
  def profile_checker?
    user=User.find(session[:user_id])
-   if user.size>0
+   if user.profile != nil
      return true
    else
      return false
    end
  end
+  def authenticate_user
+    if !logged_in?
+      redirect_to login_auths_path
+    end
+  end
 end
