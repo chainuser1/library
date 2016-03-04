@@ -1,0 +1,64 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Coming Soon</title>
+  <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag    'jquery.min', 'data-turbolinks-track' => true %>
+
+
+
+</head>
+<body>
+<div id="wrapper">
+  <div class="main">
+    <div class="header">
+      <div class="logo">
+        <h1>library<strong>maintenance</strong></h1>
+        <h2><strong>We are so</strong> sorry for inconvenience</h2>
+      </div>
+      <div class="form">
+        <p>want to learn more? - </p><input type="text" id="test" value="Enter Your Email Address"/>
+      </div>
+      <ul class="social">
+        <li class="facebook"><a href="#"></a></li>
+        <li class="twitter"><a href="#"></a></li>
+        <li class="youtube"><a href="#"></a></li>
+      </ul>
+    </div>
+
+    <ul class="boxes">
+      <li>
+        <h3>the new way to</h3>
+        look for books in our school library
+        <span class="divider"></span>
+      </li>
+      <li>
+        <h3>email us</h3>
+        <a href="#">lothlorien654@gmail.com</a>
+        <span class="divider"></span>
+      </li>
+      <li class="last">
+        <h3>call us</h3>
+        +639173083502
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+    var placeholder = $("#test").val();
+
+    $("#test").keydown(function() {
+        if (this.value == placeholder) {
+            this.value = '';
+        }
+    }).blur(function() {
+        if (this.value == '') {
+            this.value = placeholder;
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,6 +1,5 @@
 module AuthsHelper
   def log_in(user)
-    session[:user_id]=user.id
     session[:user_email]=user.email
     session[:user_role]=user.role
   end
@@ -22,8 +21,8 @@ module AuthsHelper
   Profile Checker if there is a profile associated with a specific user
 =end
  def profile_checker?
-   user=User.find(session[:user_id])
-   if user.profile != nil
+   user=User.find_by(email: current_user.email)
+   if !user.profile.nil?
      return true
    else
      return false

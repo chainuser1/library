@@ -14,5 +14,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.min.js )
 Rails.application.config.assets.precompile += %w( jquery.min.js )
 Rails.application.config.assets.precompile += %w( bootstrap-theme.min.css )
 Rails.application.config.assets.precompile += %w( costume-application.js )
+Rails.application.config.assets.precompile += %w( style.css )
+Rails.application.config.assets.precompile += %w( bg.jpg )
 
 

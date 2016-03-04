@@ -71,9 +71,9 @@
                 <li><a href="<%= login_auths_path %>">Login</a></li>
             <% else %>
                 <% if profile_checker? %>
-                  <li> <%= link_to 'View Profile', profile_path(current_user.email), class: "btn-link"%></li>
+                  <li> <%= link_to 'View Profile', profile_path(current_user.email)%></li>
                 <% else %>
-                   <li><%= link_to 'Create Your Profile', new_profile_path, class: "btn-link" %></li>
+                   <li><%= link_to 'Create Your Profile', new_profile_path %></li>
                 <% end %>
                 <li><%= link_to "Log Out", logout_auths_path, method: :post %></li>
             <% end %>

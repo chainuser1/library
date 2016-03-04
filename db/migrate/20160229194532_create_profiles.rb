@@ -1,7 +1,8 @@
 class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles , id: false do |t|
-      t.belongs_to :user, index: true, foreign_keys: true
+      #t.belongs_to :user, :primary_key=>'email',:foreign_key=>'user_email'
+      t.string :user_email
       t.string :fname
       t.string :lname
       t.string :gender

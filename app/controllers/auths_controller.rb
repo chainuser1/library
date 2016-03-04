@@ -21,7 +21,7 @@ class AuthsController < ApplicationController
       end
   end
   def logout
-    session.destroy
+    reset_session
     redirect_to root_path
   end
 end

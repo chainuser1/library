@@ -16,7 +16,4 @@ class Book < ActiveRecord::Base
   validates :copyright, presence: true
   validates :description, presence: true,
                          length: {minimum: 200, maximum: 1000}
-
-
-
 end

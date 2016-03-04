@@ -13,8 +13,8 @@
        </div>
        <div class="collapse navbar-collapse " id="toggle-options">
          <ul class="nav navbar-nav">
-           <li><%= link_to 'Edit', edit_profile_path(@user.email), class:"btn-link", method: :get%></li>
-           <li><%= link_to 'Delete Profile', profile_path(@user.email),class:"btn-link", method: :delete %></li>
+           <li><%= link_to 'Edit', edit_profile_path(CGI.escape_html(@user.email)), class:"btn-link",method: :get%></li>
+           <li><%= link_to 'Delete Profile', profile_path(CGI.escape_html(@user.email)),class:"btn-link", method: :delete %></li>
          </ul>
        </div>
      </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="form-group">
       <label>Birthdate: </label>
-      <p class="form-control"><%= @profile.birthdate.to_formatted_s('M-d-Y') %></p>
+      <p class="form-control"><%= @profile.birthdate %></p>
     </div>
   </div>
 </div>

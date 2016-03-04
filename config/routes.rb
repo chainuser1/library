@@ -1,8 +1,12 @@
 
 Rails.application.routes.draw do
-  get 'welcome/index'
-  resources :profiles, param: :email
-  get 'welcome/index'
+  REGEX_EMAIL_PATTERN=/([a-z0-9_]|[a-z0-9_]+\.[a-z0-9_]+)@(([a-z0-9]|[a-z0-9]+\.[a-z0-9]+)+\.([a-z]{2,4}))/i
+  #get '/profiles/:email/wreak' =>'profiles#wreakage', format: REGEX_EMAIL_PATTERN
+  resources :profiles, param: :email do
+    member do
+      get 'edit'
+    end
+  end
   resources :books, param: :isbn do
     member do
       post 'manifest'
@@ -27,9 +31,10 @@ Rails.application.routes.draw do
       get 'login'
       post 'verify'
       post 'logout'
+      get 'logout'
     end
   end
-  get 'welcome/index'
+
 
   resource :users do
     member do
@@ -38,12 +43,12 @@ Rails.application.routes.draw do
     end
   end
 
-
+  get 'taxonomy/maintenance'=>'welcomes#maintenance',as: :maintenance
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'#root_path
+  root 'welcomes#maintenance'#root_path
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
