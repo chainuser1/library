@@ -13,8 +13,8 @@
        </div>
        <div class="collapse navbar-collapse " id="toggle-options">
          <ul class="nav navbar-nav">
-           <li><%= link_to 'Edit', edit_profile_path(CGI.escape_html(@user.email)), class:"btn-link",method: :get%></li>
-           <li><%= link_to 'Delete Profile', profile_path(CGI.escape_html(@user.email)),class:"btn-link", method: :delete %></li>
+           <li><%= link_to 'Edit', edit_profile_path(CGI.escape_html(@user.email)),method: :get%></li>
+           <li><%= link_to 'Delete Account', profile_path(CGI.escape_html(@user.email)), method: :delete %></li>
          </ul>
        </div>
      </div>
