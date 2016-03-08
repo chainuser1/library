@@ -10,7 +10,7 @@ class AuthsController < ApplicationController
   end
   def verify
 
-      user = User.find_by(email: params[:user][:email].downcase)
+      user = User.find_by(username: params[:user][:username])
       #render plain:  user && user.authenticate(params[:user][:password])? true : false
       if user && user.authenticate(params[:user][:password])
         log_in user

@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <h4 class="text-center"><%= profile_page_heading(yield(:heading)) %></h4>
   </div>
-  <%=form_for @profile do |f| %>
+  <%= form_for(@profile, url: profile_url) do |f| %>
      <div class="panel-body">
        <% if @profile.errors.any? %>
            <div class="alert alert-danger">
@@ -10,14 +10,14 @@
               <h5><%= pluralize(@profile.errors.count,'error ') %>
               prevented saving your profile:</h5>
              <ul>
-               <% @profile.errors.full_messages do |message| %>
+               <% @profile.errors.full_messages.each do |message| %>
                   <li><%=message %></li>
                <% end %>
              </ul>
            </div>
        <% end %>
        <div class="form-group">
-         <%= f.hidden_field :user_email, :value=>current_user.email %>
+         <%= f.hidden_field :user_username, :default=>current_user.username %>
          <%= f.text_field :fname,class:"form-control",'placeholder'=>'First name:' %>
        </div>
        <div class="form-group">
@@ -27,6 +27,9 @@
          <% collection_gender={'Male'=>'Male','Female'=>'Female'} %>
          <%= f.label :gender %>
          <%= f.select(:gender, collection_gender , class:"form-control") %>
+       </div>
+       <div class="form-group">
+         <%= f.text_field :email,class:"form-control",'placeholder'=>'Email Address' %>
        </div>
        <div class="form-group">
          <%=f.text_area :address, class:"form-control", placeholder:"Mailing Address" %>

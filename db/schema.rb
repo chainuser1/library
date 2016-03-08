@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304170831) do
+ActiveRecord::Schema.define(version: 20160308171211) do
 
   create_table "book_types", force: :cascade do |t|
     t.string   "category",   limit: 255
@@ -36,27 +36,29 @@ ActiveRecord::Schema.define(version: 20160304170831) do
   add_index "books", ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
 
   create_table "profiles", id: false, force: :cascade do |t|
-    t.string   "user_email", limit: 255
-    t.string   "fname",      limit: 255
-    t.string   "lname",      limit: 255
-    t.string   "gender",     limit: 255
-    t.string   "address",    limit: 255
+    t.string   "user_username", limit: 255
+    t.string   "fname",         limit: 255
+    t.string   "lname",         limit: 255
+    t.string   "gender",        limit: 255
+    t.string   "email",         limit: 255
+    t.string   "address",       limit: 255
     t.date     "birthdate"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  add_index "profiles", ["user_email"], name: "fk_rails_7da496a489", using: :btree
+  add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true, using: :btree
+  add_index "profiles", ["user_username"], name: "fk_rails_31b749ed17", using: :btree
 
   create_table "users", id: false, force: :cascade do |t|
-    t.string   "email",           limit: 255
+    t.string   "username",        limit: 255
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.string   "password_digest", limit: 255
     t.integer  "role",            limit: 4,   default: 1
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
-  add_foreign_key "profiles", "users", column: "user_email", primary_key: "email", on_delete: :cascade
+  add_foreign_key "profiles", "users", column: "user_username", primary_key: "username", on_delete: :cascade
 end

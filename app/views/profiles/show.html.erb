@@ -9,18 +9,19 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="#"><h2><%= current_user.email %></h2><span class="badge glyphicon glyphicon-apple"></span></a>
+         <a class="navbar-brand" href="#"><h2><%= current_user.username %></h2><span class="badge glyphicon glyphicon-apple"></span></a>
        </div>
        <div class="collapse navbar-collapse " id="toggle-options">
          <ul class="nav navbar-nav">
-           <li><%= link_to 'Edit', edit_profile_path(CGI.escape_html(@user.email)),method: :get%></li>
-           <li><%= link_to 'Delete Account', profile_path(CGI.escape_html(@user.email)), method: :delete %></li>
+           <li><%= link_to 'Edit', change_profile_path(CGI.escape_html(@user.username)),method: :get%></li>
+           <li><%= link_to 'Delete Account', profile_path(CGI.escape_html(@user.username)), method: :delete %></li>
          </ul>
        </div>
      </div>
     </div>
   </div>
   <div class="panel-body">
+
     <div class="form-group">
       <label>Name: </label>
       <p class="form-control"><%= @profile.lname%>, <%= @profile.fname%></p>
@@ -28,6 +29,10 @@
     <div class="form-group">
       <label>Gender: </label>
       <p class="form-control"><%= @profile.gender %></p>
+    </div>
+    <div class="form-group">
+      <label>Email:  </label>
+      <p class="form-control"><%= @profile.email %></p>
     </div>
     <div class="form-group">
       <label>Address: </label>

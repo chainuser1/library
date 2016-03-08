@@ -10,8 +10,8 @@
     <%= form_for(:user,url: verify_auths_path) do |f| %>
 
         <div class="form-group">
-          <%= f.label :email,class: "control-label" %>
-          <%= f.email_field :email, class: 'form-control',placeholder: "Enter your email address" %>
+          <%= f.label :username,class: "control-label" %>
+          <%= f.text_field :username, class: 'form-control',placeholder: "Create username" %>
         </div>
         <div class="form-group">
           <%= f.label :password %>
