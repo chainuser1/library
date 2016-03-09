@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
     if !@profile.nil?
       redirect_to manifest_profile_path(current_user.username)
     else
-      @verb='post'
       @profile=Profile.new
     end
   end

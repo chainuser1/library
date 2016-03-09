@@ -11,6 +11,4 @@ class Profile < ActiveRecord::Base
                   format: {with: REGEX_EMAIL_PATTERN}
   validates :address, presence:true
   validates :birthdate, presence: true
-
-  
 end
