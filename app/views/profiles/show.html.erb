@@ -1,5 +1,5 @@
 <div class="panel">
-  <div class="panel-heading page-header">
+  <div class="panel-heading" >
     <div class="navbar navbar-default">
      <div class="container-fluid">
        <div class="navbar-header">
@@ -13,34 +13,34 @@
        </div>
        <div class="collapse navbar-collapse " id="toggle-options">
          <ul class="nav navbar-nav">
-           <li><%= link_to 'Edit', change_profile_path(CGI.escape_html(@user.username)),method: :get%></li>
-           <li><%= link_to 'Delete Account', profile_path(CGI.escape_html(@user.username)), method: :delete %></li>
+           <li><%= link_to 'Edit', change_profile_path(CGI.escape_html(current_user.username)),method: :get%></li>
+           <li><%= link_to 'Delete Account', delete_profile_path(CGI.escape_html(current_user.username)), method: :delete %></li>
          </ul>
        </div>
      </div>
     </div>
   </div>
-  <div class="panel-body">
+  <div class="panel-body col-sm-6">
 
-    <div class="form-group">
+    <div class="thumbnail img-thumbnail">
       <label>Name: </label>
-      <p class="form-control"><%= @profile.lname%>, <%= @profile.fname%></p>
+      <p class="input-sm"><%= @profile.lname%>, <%= @profile.fname%></p>
     </div>
-    <div class="form-group">
+    <div class="thumbnail img-thumbnail">
       <label>Gender: </label>
-      <p class="form-control"><%= @profile.gender %></p>
+      <p class="input-sm"><%= @profile.gender %></p>
     </div>
-    <div class="form-group">
+    <div class="thumbnail img-thumbnail">
       <label>Email:  </label>
-      <p class="form-control"><%= @profile.email %></p>
+      <p class="input-sm"><%= @profile.email %></p>
     </div>
-    <div class="form-group">
+    <div class="thumbnail img-thumbnail">
       <label>Address: </label>
-      <p class="form-control"><%= @profile.address %></p>
+      <p class="input-sm"><%= @profile.address %></p>
     </div>
-    <div class="form-group">
+    <div class="thumbnail img-thumbnail">
       <label>Birthdate: </label>
-      <p class="form-control"><%= @profile.birthdate %></p>
+      <p class="input-sm"><%= @profile.birthdate %></p>
     </div>
   </div>
 </div>

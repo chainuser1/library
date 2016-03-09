@@ -9,6 +9,11 @@ module AuthsHelper
   def logged_in?
     !current_user.nil?
   end
+  def authenticate_user
+    if !logged_in?
+      redirect_to login_auths_path
+    end
+  end
   def is_admin?
     if session[:user_role]==0
       return true
@@ -28,9 +33,5 @@ module AuthsHelper
      return false
    end
  end
-  def authenticate_user
-    if !logged_in?
-      redirect_to login_auths_path
-    end
-  end
+
 end

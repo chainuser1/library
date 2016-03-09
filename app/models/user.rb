@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   self.primary_key='username'
-  has_one :profile, class_name: 'Profile',primary_key: 'username',foreign_key: 'user_username'
+  has_one :profile, class_name: 'Profile',primary_key: 'username',
+          foreign_key: 'user_username', inverse_of: :user
+  accepts_nested_attributes_for :profile
   validates :username ,presence:true,
                       uniqueness: true
 

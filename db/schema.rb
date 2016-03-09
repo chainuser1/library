@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308171211) do
+ActiveRecord::Schema.define(version: 20160308232052) do
+
+  create_table "authors", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.text     "biography",  limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "book_types", force: :cascade do |t|
     t.string   "category",   limit: 255
@@ -50,8 +57,7 @@ ActiveRecord::Schema.define(version: 20160308171211) do
   add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true, using: :btree
   add_index "profiles", ["user_username"], name: "fk_rails_31b749ed17", using: :btree
 
-  create_table "users", id: false, force: :cascade do |t|
-    t.string   "username",        limit: 255
+  create_table "users", primary_key: "username", force: :cascade do |t|
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.string   "password_digest", limit: 255
@@ -60,5 +66,5 @@ ActiveRecord::Schema.define(version: 20160308171211) do
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
-  add_foreign_key "profiles", "users", column: "user_username", primary_key: "username", on_delete: :cascade
+  add_foreign_key "profiles", "users", column: "user_username", primary_key: "username", on_update: :cascade, on_delete: :cascade
 end

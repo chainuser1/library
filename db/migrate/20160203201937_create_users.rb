@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.timestamps null: false
     end
-    #add_index :users, :email, unique:true
+    execute "ALTER TABLE users ADD PRIMARY KEY (username);"
+
   end
 end

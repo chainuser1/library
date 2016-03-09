@@ -1,13 +1,12 @@
 
 Rails.application.routes.draw do
-  REGEX_EMAIL_PATTERN=/([a-z0-9_]|[a-z0-9_]+\.[a-z0-9_]+)@(([a-z0-9]|[a-z0-9]+\.[a-z0-9]+)+\.([a-z]{2,4}))/i
-  #get '/profiles/:email/wreak' =>'profiles#wreakage', format: REGEX_EMAIL_PATTERN
-  resources :profiles, param: :user_username do
+  resources :authors
+ resources :profiles, param: :user_username do
     member do
       get 'change'
       get 'manifest'
-      patch 'update'
-      get 'new'
+      get 'delete'
+      delete 'delete'
     end
   end
   resources :books, param: :isbn do
