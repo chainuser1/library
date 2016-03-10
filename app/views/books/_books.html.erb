@@ -25,7 +25,7 @@
                    <tr id="<%= book.isbn %>">
                      <td><%= book.isbn %></td>
                      <td><%= link_to book.title, book,class: "btn-link" %></td>
-                     <td><%= book.author %></td>
+                     <td class="author"><%= book.author.name %></td>
                      <td><%= book.category %></td>
                      <td><%= book.publisher %></td>
                      <td><%= book.copyright %></td>

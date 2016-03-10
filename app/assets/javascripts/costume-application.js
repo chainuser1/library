@@ -10,5 +10,8 @@ jQuery.noConflict();
             $("#library-modal").modal()
             $("#library-modal").show(1000).text("Loading...")
         });
+        $(".author").hover(function(){
+            alert($(this).text())
+        })
     });
 })(jQuery);

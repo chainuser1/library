@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:edit,:update,:delete,:remove,:show]
-
+  before_action :set_author, only: [:create,:update]
   include BooksHelper
   layout 'application'
   def index
@@ -76,7 +76,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book=Book.new(book_params)
+    @book=@author.books.create(book_params)
     respond_to do |format|
       if @book.save
         format.json {render json: @book}
@@ -93,7 +93,6 @@ class BooksController < ApplicationController
 
   def update
     #render plain: params[:isbn]
-
     respond_to do |format|
       if @book.update(book_params)
         format.json {render json: @book}
@@ -127,7 +126,10 @@ class BooksController < ApplicationController
     @book=Book.find(params[:isbn])
   end
   def book_params
-    params.require(:book).permit :isbn,:title,:author, :category,:publisher,
+    params.require(:book).permit :isbn,:title, :category,:publisher,
                                  :copyright,:description
+  end
+  def set_author
+    @author=Author.find_or_initialize_by(id: params[:book][:author])
   end
 end

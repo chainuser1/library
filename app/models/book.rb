@@ -9,11 +9,12 @@ class Book < ActiveRecord::Base
                    format: {with: ISBN_REGEX_CHECKER, message: ' is not a valid.'},
                    uniqueness: true
   validates :title, presence: true
-  validates :author, presence:true,
-                     format: {with: AUTHOR_REGEX, message: ' is not a valid.'}
+
   validates :category, presence: true
   validates :publisher, presence: true
   validates :copyright, presence: true
   validates :description, presence: true,
-                         length: {minimum: 200, maximum: 1000}
+                         length: {minimum: 30, maximum: 1000}
+
+  belongs_to :author, dependent: :destroy
 end
