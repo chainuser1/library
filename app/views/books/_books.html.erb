@@ -11,7 +11,7 @@
            <div class="table-responsive">
              <table class="table table-striped">
                <thead>
-               <tr class="text-center">
+               <tr class="bg-success text-center">
                  <th>ISBN</th>
                  <th>Title</th>
                  <th>Author</th>
@@ -24,8 +24,9 @@
                <% @books.each do |book,index|%>
                    <tr id="<%= book.isbn %>">
                      <td><%= book.isbn %></td>
-                     <td><%= link_to book.title, book,class: "btn-link" %></td>
-                     <td class="author"><%= book.author.name %></td>
+                     <td><%= link_to book.title, tranquility_cdn_book_path(book.isbn),remote:true,class: "btn-link model-books" %></td>
+                     <td><a style="z-index: 2400" class="btn-link" title="Biography"
+                            data-toggle="popover" data-trigger="hover" data-placement="right" data-content="<%=book.author.biography %>"><%= book.author.name%></a></td>
                      <td><%= book.category %></td>
                      <td><%= book.publisher %></td>
                      <td><%= book.copyright %></td>

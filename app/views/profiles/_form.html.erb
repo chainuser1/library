@@ -10,7 +10,7 @@
               <h5><%= pluralize(@profile.errors.count,'error ') %>
               prevented saving your profile:</h5>
              <ul>
-               <% @profile.errors.full_messages.each do |message| %>
+               <%= @profile.errors.full_messages.each do |message| %>
                   <li><%=message %></li>
                <% end %>
              </ul>

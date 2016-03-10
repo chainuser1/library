@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get 'show'
       get 'delete'
       post 'remove'
+      get 'tranquility-cdn'
     end
   end
   #get 'books/search' => 'books#search'

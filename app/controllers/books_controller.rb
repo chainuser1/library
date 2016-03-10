@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:edit,:update,:delete,:remove,:show]
+  before_action :set_book, only: [:edit,:update,:delete,:remove,:show,:tranquility_cdn]
   before_action :set_author, only: [:create,:update]
+
   include BooksHelper
   layout 'application'
   def index
@@ -104,6 +105,9 @@ class BooksController < ApplicationController
     end
   end
 
+  def tranquility_cdn
+
+  end
 
   def delete
 
@@ -127,9 +131,9 @@ class BooksController < ApplicationController
   end
   def book_params
     params.require(:book).permit :isbn,:title, :category,:publisher,
-                                 :copyright,:description
+                                 :copyright,:description, :author_id
   end
   def set_author
-    @author=Author.find_or_initialize_by(id: params[:book][:author])
+    @author=Author.find_or_initialize_by(id: params[:book][:author_id])
   end
 end

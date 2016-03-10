@@ -1,0 +1,16 @@
+<div class="modal-dialog col-md-offset-3">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="h4 text-primary text-center"><%= @book.title%></h4>
+      <p class="h6 text-center"><strong>By:</strong><%= @book.author.name %></p>
+    </div>
+    <div class="modal-body">
+     <p class="text-justify description">
+       <%= @book.description%>
+     </p>
+    </div>
+    <div class="modal-footer">
+      <a class="btn btn-primary" href="#cancel" data-dismiss="modal">Dismiss</a>
+    </div>
+  </div>
+</div>
