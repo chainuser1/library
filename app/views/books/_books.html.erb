@@ -29,7 +29,7 @@
                             data-toggle="popover" data-trigger="hover" data-placement="right" data-content="<%=book.author.biography %>"><%= book.author.name%></a></td>
                      <td><%= book.category %></td>
                      <td><%= book.publisher %></td>
-                     <td><%= book.copyright %></td>
+                     <td><%= book.copyright.to_formatted_s(:long) %></td>
                      <% if is_admin? %>
                          <td><%= link_to "Edit", edit_book_path(book.isbn), remote: true, class: "btn btn-default model-books" %></td>
                          <td><%= link_to "Delete", delete_book_path(book.isbn), remote: true , class: "btn btn-default model-books"%></td>

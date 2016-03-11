@@ -14,7 +14,7 @@ class Book < ActiveRecord::Base
   validates :publisher, presence: true
   validates :copyright, presence: true
   validates :description, presence: true,
-                         length: {minimum: 30, maximum: 1000}
+                         length: {minimum: 100, maximum: 2500}
 
   belongs_to :author, dependent: :destroy
 end

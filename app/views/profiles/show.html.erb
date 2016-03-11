@@ -40,7 +40,7 @@
     </div>
     <div class="thumbnail img-thumbnail">
       <label>Birthdate: </label>
-      <p class="input-sm"><%= @profile.birthdate %></p>
+      <p class="input-sm"><%= @profile.birthdate.to_formatted_s(:long) %></p>
     </div>
   </div>
 </div>
