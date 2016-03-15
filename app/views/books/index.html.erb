@@ -1,4 +1,4 @@
-<% provide(:heading,'Listing')%>
+<% provide(:heading,'Listing: '+  pluralize(@books.size,'book'))%>
 <% provide(:title, 'All Books')%>
 <%= render 'books' %>
 

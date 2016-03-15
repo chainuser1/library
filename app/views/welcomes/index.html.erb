@@ -2,4 +2,57 @@
 <% provide(:title, "Welcome") %>
 <h2 class="h2 text-center">Welcome to Your Library</h2>
 <p class="text-success text-center">Your journey starts here...</p>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
 
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <!--<div class="item active">-->
+      <!---->
+
+      <!--<div class="carousel-caption">-->
+        <!--<h3>Your knowledge</h3>-->
+        <!--<p>Precious knowledge must be transcribed in a book.</p>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="item active">
+      <%= image_tag('read.jpg',alt: "Knowledge must be known") %>
+      <div class="carousel-caption">
+        <h3>Education</h3>
+        <p>Must be sought for and known</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag('piano-stair.jpg',alt: "Knowledge is a key to success") %>
+      <div class="carousel-caption">
+        <h3>Opportunity</h3>
+        <p>Education is a key to open doors of opportunities.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag('learned.jpg',alt: "Knowledge is a key to success") %>
+      <div class="carousel-caption">
+        <h3>Learning</h3>
+        <p>It is a lifetime endeavor.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

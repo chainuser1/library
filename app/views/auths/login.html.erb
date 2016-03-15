@@ -1,9 +1,9 @@
 <% provide(:title, "Log in") %>
-<div class="container col-md-offset-3">
+<div class="container col-md-offset-3" style="margin-top: 9%">
 
 
-  <div class="row col-md-6">
-    <div class="legend"><legend>Log In</legend></div>
+  <div class=" col-md-6">
+    <div class="legend text-center"><legend>Log In</legend></div>
     <% if flash[:danger].present? %>
         <div class="alert alert-danger"><%= flash[:danger] %></div>
     <% end %>
@@ -22,7 +22,7 @@
         <div class="control-group">
           <!-- Button -->
           <div class="controls text-center">
-            <button class="btn btn-success">Log In</button>
+            <button class="success button">Log In</button>
           </div>
         </div>
     <% end %>

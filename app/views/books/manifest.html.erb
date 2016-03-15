@@ -1,5 +1,5 @@
 <% if @books!=nil%>
-    <% provide(:heading,'Search Results:  ' + @books.size.to_s) %>
+    <% provide(:heading,pluralize(@books.size,'result')+ ' found') %>
 <%else %>
     <% provide(:heading,'Search Results') %>
 <% end %>
