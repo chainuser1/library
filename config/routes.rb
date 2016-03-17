@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :carts, param: :isbn do
     member do
       post 'create'
+      get 'delete'
     end
   end
   resources :authors

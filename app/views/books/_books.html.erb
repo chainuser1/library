@@ -35,8 +35,8 @@
                          <td><%= link_to "Edit", edit_book_path(book.isbn), remote: true, class: "warning button model-books" %></td>
                          <td><%= link_to "Delete", delete_book_path(book.isbn), remote: true , class: "alert button model-books"%></td>
                      <% else %>
-                         <td><%= link_to "Reserve", cart_path(book.isbn), remote: true, class: "secondary button model-books cart-sling #{(Cart.find_by(book_isbn: book.isbn)!=nil) ? 'disabled' : ''}" , method: :post %></td>
-                         <td><%= link_to "Remove", cart_path(book.isbn), remote: true , class: "primary button model-books cart-sling #{(Cart.find_by(book_isbn: book.isbn)!=nil )? '' : 'disabled'}" , method: :delete%></td>
+                         <td><%= link_to "Reserve", cart_path(book.isbn), class: "secondary button cart-sling #{(Cart.find_by(book_isbn: book.isbn)!=nil) ? 'disabled' : ''}" , method: :post %></td>
+                         <td><%= link_to "Remove", delete_cart_path(book.isbn) , class: "primary button #{(Cart.find_by(book_isbn: book.isbn)!=nil )? '' : 'disabled'}" %></td>
                      <% end %>
                    </tr>
                <% end %>
