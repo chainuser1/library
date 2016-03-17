@@ -17,4 +17,6 @@ class Book < ActiveRecord::Base
                          length: {minimum: 100, maximum: 2500}
 
   belongs_to :author, dependent: :destroy
+  has_many :carts, foreign_key: :book_isbn, primary_key: :isbn
+  has_many :users, through: :carts, foreign_key: :book_isbn, primary_key: :isbn
 end

@@ -51,6 +51,10 @@
                     <li class="bg-warning"><%= link_to 'Add Category', new_book_types_path, remote: true,class: "model-books" %></li>
                     <li role="separator" class="divider"></li>
                     <li class="bg-warning"><%= link_to 'Add Books', new_book_path, remote: true,class: "model-books" %></li>
+                <% else %>
+                    <li role="separator" class="divider"></li>
+                    <li class="bg-warning"><%= link_to 'My Cart', carts_path, remote: true,class: "model-books" %></li>
+
                 <% end %>
             <% end %>
           </ul>

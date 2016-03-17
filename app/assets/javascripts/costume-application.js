@@ -7,7 +7,13 @@ jQuery.noConflict();
        $(".model-books").click(function(){
             $("#library-modal").modal()
             $("#library-modal").show(1000).text("Loading...")
+
         });
+        $(".cart-sling").click(function(){
+            if(!$(this).hasClass('disabled')){
+                $(this).addClass("disabled")
+            }
+        })
         $('[data-toggle="popover"]').popover();
     });
 })(jQuery);

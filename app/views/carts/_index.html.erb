@@ -1,0 +1,25 @@
+<div class="modal-dialog">
+  <div  class="modal-content">
+    <div class="modal-header">
+      <h4 class="text-left">My Cart</h4>
+    </div>
+    <div class="modal-body">
+      <table class="table">
+        <thead>
+         <tr>
+           <th>ISBN</th>
+           <th>Book Title</th>
+         </tr>
+        </thead>
+        <tbody>
+          <% @carts.each do |cart| %>
+             <tr>
+               <td><%= cart.book.isbn %></td>
+               <td><%= cart.book.title %></td>
+             </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

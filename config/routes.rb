@@ -1,5 +1,10 @@
 
 Rails.application.routes.draw do
+  resources :carts, param: :isbn do
+    member do
+      post 'create'
+    end
+  end
   resources :authors
  resources :profiles, param: :user_username do
     member do
