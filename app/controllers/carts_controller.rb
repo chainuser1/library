@@ -7,20 +7,23 @@ class CartsController < ApplicationController
   def create
     @book=Book.find_by(isbn: params[:isbn])
     @cart=@book.carts.create(user_username: current_user.username)
-    respond_to do |format|
       if @cart.save
-        format.html {redirect_to books_path}
-        format.json {@cart}
+         redirect_to books_path
       else
-        format.html {redirect_to maintenance_welcome_path}
-        format.json {@cart}
+         redirect_to maintenance_welcome_path
       end
-    end
   end
   def delete
     cart=Cart.find_by(book_isbn: params[:isbn], user_username: current_user.username)
     cart.destroy()
     redirect_to books_path
   end
-
+  def delmodal
+    cart=Cart.find_by(book_isbn: params[:isbn], user_username: current_user.username)
+    if cart.destroy()
+      render plain: 'Item removed'
+    else
+      render plain: 'Item was not removed'
+    end
+  end
 end

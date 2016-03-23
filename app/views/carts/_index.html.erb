@@ -1,21 +1,24 @@
 <div class="modal-dialog">
   <div  class="modal-content">
     <div class="modal-header">
-      <h4 class="text-left">My Cart</h4>
+      <h4 class="text-left">My  Book Reservations<button class="close" data-dismiss="modal">&times;</button></h4>
+
     </div>
     <div class="modal-body">
       <table class="table">
         <thead>
          <tr>
-           <th>ISBN</th>
-           <th>Book Title</th>
+           <th class="text-center">ISBN</th>
+           <th class="text-center">Book Title</th>
          </tr>
         </thead>
         <tbody>
           <% @carts.each do |cart| %>
-             <tr>
-               <td><%= cart.book.isbn %></td>
+             <tr id="<%=cart.id %>">
+               <td><%= cart.book.author.name %></td>
                <td><%= cart.book.title %></td>
+               <td class=""><a  class="reservation primary button"
+                      aria-haspopup="false" aria-expanded="true" data="<%= cart.book_isbn%>" data-id="<%= cart.id%>">Remove</a></td>
              </tr>
           <% end %>
         </tbody>
@@ -23,3 +26,30 @@
     </div>
   </div>
 </div>
+<script>
+  !function($){
+      $(function(){
+          $('.reservation').on('click',function(e){
+              e.preventDefault();
+              var id=$(this).attr('data-id');
+              $.ajax({
+                  url: '/carts/'+$(this).attr('data')+ '/delmodal',
+                  type: 'GET',
+                  success: function(data){
+                    if (/Item removed/.test(data))
+                    {
+                       $('#'+id).remove()
+                    }
+                    else{
+                        alert(data)
+                    }
+                  },
+                  error: function(status,xhr){
+                      alert('An error occurred!'+status.status)
+                  }
+              });
+          });
+
+      });
+  }(window.jQuery);
+</script>

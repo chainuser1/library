@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     member do
       post 'create'
       get 'delete'
+      get 'delmodal'
     end
   end
   resources :authors
