@@ -1,5 +1,10 @@
 
 Rails.application.routes.draw do
+  resources :tasks do
+    member do
+      get 'show_reservations'
+    end
+  end
   resources :carts, param: :isbn do
     member do
       post 'create'

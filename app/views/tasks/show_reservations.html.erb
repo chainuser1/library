@@ -1,0 +1,45 @@
+
+<div class="container">
+
+
+  <div class="section-header">
+    <h3 class="h3 section-title">Reservations</h3>
+    <div class="alert" id="crucial"></div>
+  </div>
+  <div class="section-body">
+    <% if @carts.present? %>
+        <div class="table-responsive">
+          <table class="hover">
+            <thead>
+            <tr class="bg-success">
+              <th class="text-center">User</th>
+              <th class="text-center">ISBN</th>
+              <th class="text-center" >Author</th>
+              <th class="text-center">Date Reserved</th>
+
+              <th colspan="2" class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+               <% @carts.each do |cart| %>
+                 <tr>
+                   <td><%= cart.user.username %></td>
+                   <td><%= cart.book_isbn %></td>
+                   <td><%= cart.book.author.name %></td>
+                   <td><%= cart.created_at.to_formatted_s(:long) %></td>
+                 </tr>
+               <% end %>
+            </tbody>
+          </table>'
+        </div>
+    <% else %>
+        <h4 class="h4 col-sm-6 text-warning">No Reservations Found!</h4>
+    <% end %>
+  </div>
+  <div class="section-footer text-center">
+    <% if @books!=nil %>
+        <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
+    <% end %>
+  </div>
+</div>
+
