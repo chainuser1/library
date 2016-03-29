@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316183356) do
+ActiveRecord::Schema.define(version: 20160329180824) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -43,9 +43,17 @@ ActiveRecord::Schema.define(version: 20160316183356) do
   add_index "books", ["author_id"], name: "fk_rails_53d51ce16a", using: :btree
   add_index "books", ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
 
-  create_table "carts", id: false, force: :cascade do |t|
+  create_table "carts", force: :cascade do |t|
     t.string   "book_isbn",     limit: 255
     t.string   "user_username", limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "photos", id: false, force: :cascade do |t|
+    t.string   "user_username", limit: 255
+    t.string   "name",          limit: 255
+    t.string   "attachment",    limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end

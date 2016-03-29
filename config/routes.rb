@@ -1,5 +1,13 @@
 
 Rails.application.routes.draw do
+  get 'photos/index'
+
+  get 'photos/new'
+
+  get 'photos/create'
+
+  get 'photos/destroy'
+
   resources :tasks do
     member do
       get 'show_reservations'
