@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160329180824) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "photos", id: false, force: :cascade do |t|
+  create_table "photos", force: :cascade do |t|
     t.string   "user_username", limit: 255
     t.string   "name",          limit: 255
     t.string   "attachment",    limit: 255

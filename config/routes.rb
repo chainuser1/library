@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'photos/new'
 
-  get 'photos/create'
+  post 'photos/create'
 
   get 'photos/destroy'
 
