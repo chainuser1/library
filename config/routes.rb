@@ -1,13 +1,6 @@
 
 Rails.application.routes.draw do
-  get 'photos/index'
-
-  get 'photos/new'
-
-  post 'photos/create'
-
-  get 'photos/destroy'
-
+  resources :photos, :only => [:index, :new, :create, :destroy]
   resources :tasks do
     member do
       get 'show_reservations'
