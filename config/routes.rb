@@ -1,57 +1,65 @@
 
 Rails.application.routes.draw do
-  resources :photos, :only => [:index, :new, :create, :destroy]
-  resources :tasks do
-    member do
-      get 'show_reservations'
+  scope '/user' do
+    resource :auths do
+      member do
+        get 'login'
+        post 'verify'
+        post 'logout'
+        get 'logout'
+      end
+    end
+    scope '/profiles' do
+      resources :photos, :only => [:index, :new, :create, :destroy]
+    end
+    resources :profiles, param: :user_username do
+      member do
+        get 'change',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
+        get 'manifest',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
+        get 'delete',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
+        post 'remove',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
+      end
+    end
+    resources :books , param: :isbn do
+      member do
+        post 'manifest'
+        get 'search'
+        get 'show'
+        get 'tranquility-cdn'
+      end
+    end
+    scope '/admin' do
+      resources :tasks do
+        member do
+          get 'show_reservations'
+        end
+      end
+      resources :books, param: :isbn do
+        member do
+          get 'edit'
+          patch 'update'
+          get 'delete'
+          post 'remove'
+        end
+      end
+      resource :book_types do
+        member do
+          get 'new'
+          post 'create'
+        end
+      end
+    end
+    resources :carts, param: :isbn do
+      member do
+        post 'create'
+        get 'delete'
+        get 'delmodal'
+      end
     end
   end
-  resources :carts, param: :isbn do
-    member do
-      post 'create'
-      get 'delete'
-      get 'delmodal'
-    end
-  end
+
+
   resources :authors
- resources :profiles, param: :user_username do
-    member do
-      get 'change',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
-      get 'manifest',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
-      get 'delete',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
-      post 'remove',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
-    end
-  end
-  resources :books, param: :isbn do
-    member do
-      post 'manifest'
-      get 'edit'
-      patch 'update'
-      get 'search'
-      get 'show'
-      get 'delete'
-      post 'remove'
-      get 'tranquility-cdn'
-    end
-  end
-  #get 'books/search' => 'books#search'
-  resource :book_types do
-    member do
-      get 'new'
-      post 'create'
-    end
-  end
-
-  resource :auths do
-    member do
-      get 'login'
-      post 'verify'
-      post 'logout'
-      get 'logout'
-    end
-  end
-
-
   resource :users do
     member do
       get 'new'
