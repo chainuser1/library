@@ -20,28 +20,14 @@ Rails.application.routes.draw do
         post 'remove',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
       end
     end
-    resources :books , param: :isbn do
-      member do
-        post 'manifest'
-        get 'search'
-        get 'show'
-        get 'tranquility-cdn'
-      end
-    end
+
     scope '/admin' do
       resources :tasks do
         member do
           get 'show_reservations'
         end
       end
-      resources :books, param: :isbn do
-        member do
-          get 'edit'
-          patch 'update'
-          get 'delete'
-          post 'remove'
-        end
-      end
+
       resource :book_types do
         member do
           get 'new'
@@ -58,7 +44,18 @@ Rails.application.routes.draw do
     end
   end
 
-
+  resources :books, param: :isbn do
+    member do
+      post 'manifest'
+      get 'search'
+      get 'show'
+      get 'tranquility-cdn'
+      get 'edit'
+      patch 'update'
+      get 'delete'
+      post 'remove'
+    end
+  end
   resources :authors
   resource :users do
     member do
