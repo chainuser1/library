@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         get 'logout'
       end
     end
-    scope '/profiles' do
+    scope '/profiles-myphotos' do
       resources :photos, :only => [:index, :new, :create, :destroy]
     end
     resources :profiles, param: :user_username do
@@ -20,7 +20,6 @@ Rails.application.routes.draw do
         post 'remove',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
       end
     end
-
     scope '/admin' do
       resources :tasks do
         member do
