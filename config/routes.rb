@@ -43,18 +43,19 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :books, param: :isbn do
-    member do
-      post 'manifest'
-      get 'search'
-      get 'show'
-      get 'tranquility-cdn'
-      get 'edit'
-      patch 'update'
-      get 'delete'
-      post 'remove'
+
+    resources :books, param: :isbn do
+      member do
+        post 'manifest'
+        get 'search'
+        get 'show'
+        get 'tranquility-cdn'
+        get 'edit'
+        patch 'update'
+        get 'delete'
+        post 'remove'
+      end
     end
-  end
   resources :authors
   resource :users do
     member do
