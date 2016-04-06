@@ -31,12 +31,14 @@
                      <td><%= book.category %></td>
                      <td><%= book.publisher %></td>
                      <td><%= book.copyright.to_formatted_s(:long) %></td>
-                     <% if is_admin? %>
-                         <td><%= link_to "Edit", edit_book_path(book.isbn), remote: true, class: "warning button model-books" %></td>
-                         <td><%= link_to "Delete", delete_book_path(book.isbn), remote: true , class: "alert button model-books"%></td>
-                     <% else %>
-                         <td><%= link_to "Reserve", cart_path(book.isbn), class: "secondary button cart-sling #{(Cart.find_by(book_isbn: book.isbn, user_username: current_user.username)!=nil) ? 'disabled' : ''}" , method: :post %></td>
-                         <td><%= link_to "Remove", delete_cart_path(book.isbn) , class: "primary button #{(Cart.find_by(book_isbn: book.isbn, user_username: current_user.username)!=nil )? '' : 'disabled'}" %></td>
+                     <% if logged_in? %>
+                         <% if is_admin? %>
+                             <td><%= link_to "Edit", edit_book_path(book.isbn), remote: true, class: "warning button model-books" %></td>
+                             <td><%= link_to "Delete", delete_book_path(book.isbn), remote: true , class: "alert button model-books"%></td>
+                         <% else %>
+                             <td><%= link_to "Reserve", cart_path(book.isbn), class: "secondary button cart-sling #{(Cart.find_by(book_isbn: book.isbn, user_username: current_user.username)!=nil) ? 'disabled' : ''}" , method: :post %></td>
+                             <td><%= link_to "Remove", delete_cart_path(book.isbn) , class: "primary button #{(Cart.find_by(book_isbn: book.isbn, user_username: current_user.username)!=nil )? '' : 'disabled'}" %></td>
+                         <% end %>
                      <% end %>
                    </tr>
                <% end %>
