@@ -1,16 +1,20 @@
 class PhotosController < ApplicationController
   def index
-    @photos=current_user.photos
+    @photos=current_user.photos.paginate(:per_page=>20,:page=>params[:photos] )
   end
   def new
     @photo=Photo.new
   end
   def create
     @photo=Photo.new(photo_params)
-    if @photo.save
-      redirect_to photos_path, notice: "The #{@photo.name} has been uploaded"
-    else
-      render 'new'
+    respond_to do |format|
+      if @photo.save
+        format.html {redirect_to photos_path, notice: "The #{@photo.name} has been uploaded"}
+        format.js {}
+      else
+        format.html{render 'new'}
+        format.js {}
+      end
     end
   end
   def destroy

@@ -1,2 +1,18 @@
-<h1>Photos#index</h1>
-<p>Find me in app/views/photos/index.html.erb</p>
+<%= render 'profiles/profile_header' %>
+
+<div class="panel body" style="margin-top: 7%;">
+  <div class="row">
+    <% if @photos.any? %>
+       <% @photos.each do |photo| %>
+          <div class="col-xs-3">
+            <a class="thumbnail">
+              <%= image_tag photo.attachment_url, alt: "#{photo.name}", style:"width: 200px; height:150px;" %>
+            </a>
+          </div>
+        <% end %>
+    <% end %>
+    <% if @photos!=nil %>
+        <%= will_paginate @photos, renderer: BootstrapPagination::Rails %>
+    <% end %>
+  </div>
+</div>

@@ -23,5 +23,7 @@ Rails.application.config.assets.precompile += %w( writing.jpg )
 Rails.application.config.assets.precompile += %w( read.jpg )
 Rails.application.config.assets.precompile += %w( piano-stair.jpg )
 Rails.application.config.assets.precompile += %w( learned.jpg )
+Rails.application.config.assets.precompile += %w( picedit.css )
+Rails.application.config.assets.precompile += %w( picedit.js )
 
 

@@ -16,10 +16,10 @@ Rails.application.routes.draw do
   resources :authors
  resources :profiles, param: :user_username do
     member do
-      get 'change'
-      get 'manifest'
-      get 'delete'
-      delete 'delete'
+      get 'change',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
+      get 'manifest',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
+      get 'delete',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
+      post 'remove',constraints: {user_username: /[[:alnum:]]+(?:[-_\. ]?[[:alnum:]]+)*/}
     end
   end
   resources :books, param: :isbn do

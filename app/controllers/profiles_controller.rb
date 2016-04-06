@@ -1,8 +1,7 @@
 class ProfilesController < ApplicationController
   layout 'application'
   before_action :authenticate_user#, :except=>[]
-  before_action :set_profile,:only=>[:change,:new,:update,:manifest,:delete]
-  after_action :redirect_logout, :only=>[:delete]
+  before_action :set_profile,:only=>[:change,:new,:update,:manifest,:remove]
   def index
   end
   def new
@@ -46,19 +45,20 @@ class ProfilesController < ApplicationController
       end
     end
   end
-  def delete
-    @user.destroy
-  end
-  private
-  def redirect_logout
+ def delete
+
+ end
+  def remove
+    @profile.delete
     redirect_to logout_auths_path
   end
+  private
+
 
   def profile_params
     params.require(:profile).permit(:user_username,:fname,:lname,:gender,:email,:address, :birthdate)
   end
   def set_profile
-    @user=User.find_by(username: current_user.username)#relationship has been established via id
-    @profile=@user.profile
+    @profile=current_user.profile
   end
 end

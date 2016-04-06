@@ -1,0 +1,14 @@
+<div class="modal-dialog col-md-offset-3">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="h4 text-warning">Profile Removal!</h4>
+    </div>
+    <div class="modal-body">
+      <p class="alert">Are you sure you want to remove your profile?</p>
+    </div>
+    <div class="modal-footer">
+      <%= link_to "Yes, I want to delete this.", remove_profile_path(CGI.escape_html(current_user.username)),class:"btn btn-danger", method:"post" %>
+      <a class="btn btn-primary" href="#cancel" data-dismiss="modal">No, I refuse to delete this.</a>
+    </div>
+  </div>
+</div>

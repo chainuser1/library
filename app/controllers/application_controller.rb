@@ -4,5 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include AuthsHelper
+  include UsersHelper
   require "will_paginate-bootstrap"
 end
+
