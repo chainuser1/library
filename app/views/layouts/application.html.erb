@@ -46,7 +46,7 @@
             <% if logged_in? %>
                 <li><%=link_to 'Search for Book', search_book_path('index'), remote:true, class:"model-books" %></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Old Books</a></li>
+                <li><%= link_to 'Old Books', show_old_book_path('old_days') %></li>
                 <% if is_admin? %>
                     <li role="separator" class="divider"></li>
                     <li class="bg-warning"><%= link_to 'Add Category', new_book_types_path, remote: true,class: "model-books" %></li>
@@ -55,7 +55,6 @@
                 <% else %>
                     <li role="separator" class="divider"></li>
                     <li class="bg-warning"><%= link_to 'My Cart', carts_path, remote: true,class: "model-books" %></li>
-
                 <% end %>
             <% end %>
           </ul>

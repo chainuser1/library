@@ -117,6 +117,7 @@ class BooksController < ApplicationController
     @book=@book.delete
   end
   def show_old
+    @books=Book.all.paginate(:per_page=>5,:page => params[:page]).order('copyright DESC').limit(20)
   end
 
   def show_new

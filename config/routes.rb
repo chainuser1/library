@@ -48,10 +48,11 @@ Rails.application.routes.draw do
       member do
         post 'manifest'
         get 'search'
+        get 'show_old'
         get 'show'
         get 'tranquility-cdn'
         get 'edit'
-        patch 'update'
+        patch 'show'
         get 'delete'
         post 'remove'
       end
