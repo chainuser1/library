@@ -10,7 +10,6 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.save
         format.html {redirect_to photos_path, notice: "The #{@photo.name} has been uploaded"}
-        format.js {}
       else
         format.html{render 'new'}
         format.js {}

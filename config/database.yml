@@ -13,7 +13,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: chainuser1
+  username: root
   password: efy65423
   host: localhost
 
@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: library_production
-  username: chainuser1
+  username: root
   password: <%= ENV['LIBRARY_DATABASE_PASSWORD'] %>

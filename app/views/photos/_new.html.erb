@@ -33,7 +33,7 @@
                 formSubmitted: function(response){
                     if(response.status==200){
                         alert("Successfully uploaded your attachment!")
-                        window.location="/profiles/"+"<%= current_user.username%>"+"/manifest"
+                        window.location="<%= photos_path %>"
                     }
                 }
             });
